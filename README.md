@@ -9,14 +9,13 @@ NIDO V1 è una web app mobile-first per controllare esclusivamente le spese dome
 - Netlify
 
 ## Sviluppo
-Copia `.env.example` in `.env` e inserisci le variabili Firebase, poi:
-
-```bash
-npm install
-npm run dev
-```
+Copia `.env.example` in `.env` e inserisci le variabili Firebase, poi `npm install` e `npm run dev`.
 
 ## Build
 `npm run build` produce `dist/`.
 
-Le variabili Firebase sono pubbliche di natura client-side, ma non vengono hardcodate nel repository: usa le environment variables locali/Netlify.
+## Firebase
+Abilita Email/Password in Firebase Authentication e pubblica `firestore.rules` nel progetto `latorre-eaa29`. Tutti i documenti sono isolati sotto `users/{uid}` e le regole consentono accesso solo al relativo utente autenticato.
+
+## Netlify
+`netlify.toml` imposta `npm run build`, publish `dist` e il rewrite SPA. Le variabili `VITE_FIREBASE_*` vanno configurate nelle environment variables di Netlify; non inserire segreti o service account nel repository.
